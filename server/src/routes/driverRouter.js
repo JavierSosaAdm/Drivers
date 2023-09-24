@@ -4,7 +4,7 @@ const { handlerCreate, getHandlerInfo, handlerName, handlerId } = require('../Co
 const driverRouter = Router()
 
 driverRouter.post('/driver', handlerCreate);
-driverRouter.get('/driver', getHandlerInfo);
+driverRouter.get('/driver', getHandlerInfo); //TERMINADO
 driverRouter.get('/search', handlerName);
 driverRouter.get('/driver/:id', handlerId);
 
