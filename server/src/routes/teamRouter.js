@@ -3,6 +3,6 @@ const { getHandrlerTeam } = require('../Controllers/hadlers')
 
 const teamRouter = Router()
 
-teamRouter.get('/team', getHandrlerTeam)
+teamRouter.get('/teams', getHandrlerTeam) // TERMINADO
 
 module.exports = { teamRouter };

@@ -4,7 +4,7 @@ module.exports = (sequelize) => {
     sequelize.define('teams', {
         name: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: false
         },
         id: {
             type: DataTypes.UUID,

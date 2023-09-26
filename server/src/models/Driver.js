@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
     },
 
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
     },
 
@@ -42,7 +42,7 @@ module.exports = (sequelize) => {
     },
 
     created: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.BOOLEAN(true, false),
     }
 
   }, {timestamps: false});
