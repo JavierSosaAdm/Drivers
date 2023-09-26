@@ -5,7 +5,7 @@ const driverRouter = Router()
 
 driverRouter.post('/drivers', handlerCreate); // CASI TERMINADO
 driverRouter.get('/drivers', getHandlerInfo); //TERMINADO
-driverRouter.get('/search', handlerName); // falta apellidos y el toLowerCase();
+driverRouter.get('/search', handlerName); // falta el toLowerCase();
 driverRouter.get('/drivers/:id', handlerId); // TERMINADO
 
 

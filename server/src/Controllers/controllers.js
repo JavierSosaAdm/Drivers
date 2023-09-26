@@ -46,8 +46,7 @@ const getInfo = async () => {
 const getByName= async (name, lastName) => {
 
     if (!name && !lastName) return 'Debe escribir el nombre del Piloto';    
-  
-    
+   
     const nameDB = await Driver.findAll({
         where: {
             name: {
