@@ -43,38 +43,61 @@ const getInfo = async () => {
     return [...driversDB, ...driversAPI]
 };
 
-const getByName= async (name) => {
+const getByName= async (name, lastName) => {
+
+    if (!name && !lastName) return 'Debe escribir el nombre del Piloto';    
+  
     
-
-    if (!name) return 'Debe escribir el nombre del Piloto';    
- 
-        const nameDB = await Driver.findAll({
-            where: {
-                name: {
-                    [Op.iLike]: `${name}`
-                }
+    const nameDB = await Driver.findAll({
+        where: {
+            name: {
+                [Op.iLike]: `${name}`
             }
-        });
+        }
+    });
 
-        const response = (await axios.get(`${API_URL}/drivers?name.forename=${name}`)).data
-        const namesAPI = [...response];
-        const allDrivers = [...nameDB, ...namesAPI];
+    
+    const lastNameDB = await Driver.findAll({
+        where: {
+            lastName: {
+                [Op.iLike]: `${lastName}`
+            }
+        }
+    });
+
+    const allNamesDB = [...nameDB, ...lastNameDB].map((driver) => {
+        return {
+            id: driver.id,
+            name: driver.name,
+            lastName: driver.lastName,
+            description: driver.description,
+            image: driver.image,  
+            nationality: driver.nationality,
+            birthdate: driver.birthdate,
+            teams: driver.teams
+        }
+    })
+
+        const response1 = (await axios.get(`${API_URL}/drivers?name.forename=${name}`)).data
+        const response2 = (await axios.get(`${API_URL}/drivers?name.surname=${name}`)).data
+        const namesAPI = [...response1, ...response2].map((driver) => {
+            return {
+                id: driver.id,
+                name: driver.name.forename,
+                lastName: driver.name.surname,
+                description: driver.description,
+                image: driver.image.url? driver.image.url : 'https://meragor.com/files/styles//ava_800_800_wm/lyudi-motokross-sport-11644.jpg',  
+                nationality: driver.nationality,
+                birthdate: driver.dob,
+                teams: driver.teams
+            };
+        });
+        const allDrivers = [...allNamesDB, ...namesAPI];
+
         if (allDrivers.length === 0) {
             return 'No se encuentran pilotos con ese nombre.'
         } else {
-            return allDrivers.slice(0, 15).map((driver) => {
-                return {
-                    // incluir aquí lo que va dato por dato detallado
-                    id: driver.id,
-                    name: driver.name.forename,
-                    lastName: driver.name.surname,
-                    description: driver.description,
-                    image: driver.image.url? driver.image.url : 'https://meragor.com/files/styles//ava_800_800_wm/lyudi-motokross-sport-11644.jpg',  
-                    nationality: driver.nationality,
-                    birthdate: driver.dob,
-                    teams: driver.teams
-                };
-            })
+            return allDrivers;
         };
 };
 
