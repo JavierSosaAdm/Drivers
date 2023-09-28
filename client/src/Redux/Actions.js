@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const link = 'http://localhost:3001';
 
-export function getDrivers () {
+ function getDrivers () {
     return async (dispatch) => {
 
         const response = await axios.get(`${link}/drivers`)
@@ -13,7 +13,7 @@ export function getDrivers () {
     }
 };
 
-export function getTeams (){
+ function getTeams (){
     return async (dispatch) => {
         const response = await axios.get(`${link}/teams`)
         return dispatch({
@@ -23,7 +23,7 @@ export function getTeams (){
     }
 };
 
-export function getByName (name){
+ function getByName (name){
     return async (dispatch) => {
         const response = await axios.get(`${link}/search?name=${name}`)
         return dispatch({
@@ -33,7 +33,7 @@ export function getByName (name){
     }
 };
 
-export function getById (id){
+ function getById (id){
     return async (dispatch) => {
         const response = await axios.get(`${link}/drivers/${id}`)
         return dispatch({
@@ -43,7 +43,7 @@ export function getById (id){
     }
 };
 
-export function create (form){
+ function create (form){
     try {
         return async (dispatch) => {
             const response = await axios.post(`${link}/drivers`, form)
@@ -75,4 +75,4 @@ export function create (form){
 //         })
 //     }
 // };
-
+export default {getDrivers, getTeams, getByName, getById, create };
