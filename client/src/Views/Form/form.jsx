@@ -2,8 +2,9 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import create from '../../Redux/Actions'
-
+import { create } from '../../Redux/Actions';
+import validates from './validates';
+import style from './form.module.css';
 const Form = () => {
     const link = 'http://localhost:30001'
     const dispatch = useDispatch();
@@ -63,9 +64,56 @@ const Form = () => {
         event.preventDefault();
         dispatch(create(form))
     };
-
+    
     return(
-        <h1>Aquí va el formulario de creación</h1>
+        <div>
+            <h1>Formulario de creación del corredor</h1>
+            <Link>
+                <button className={style.button} >Volver al mení pricipal</button>
+            </Link>
+            <form onSubmit={handlerSumit} className={style.form} >
+                <label htmlFor="name" className={style.label} >Nombre: </label>
+                <input className={style.formInput} type="text" id='' value={form.name} name='name' placeholder='Escribir nombre...' onChange={handlerFormChange} />
+                {errors.name !== '' ? <span>{errors.name}</span> : ''}
+                <hr />
+                <label htmlFor="lastName" className={style.label} >Apellido: </label>
+                <input className={style.formInput} type="text" id='' value={form.lastName} name='lastName' placeholder='Escribir apellido...' onChange={handlerFormChange} />
+                {errors.lastName !== '' ? <span>{errors.lastName}</span> : ''}
+                <hr />
+                <label htmlFor="nationality" className={style.label} > Nacionalidad: </label>
+                <input className={style.formInput} type="text" id='' value={form.nationality} name='nationality' placeholder='Agregar nacionalidad...' onChange={handlerFormChange} />
+                {errors.nationality !== '' ? <span>{errors.nationality}</span> : ''}
+                <hr />
+                <label htmlFor="birthdate" className={style.label} >Fecha de Nacimiento: </label>
+                <input className={style.formInput} type="text" id='' value={form.birthdate} name='birthdate' placeholder='Colocar fecha...' onChange={handlerFormChange} />
+                {errors.birthdate !== '' ? <span>{errors.birthdate}</span> : ''}
+                <hr />
+                <label htmlFor="image" className={style.label} >Imagen: </label>
+                <input className={style.formInput} type="text" id='' value={form.image} name='image' placeholder='Link de imagen...' onChange={handlerFormChange} />
+                {errors.image !== '' ? <span>{errors.image}</span> : ''}
+                <hr />
+                <label htmlFor="teams" className={style.label} >Escudería/as: </label>
+                <select onChange={handlerSelectChance}>
+                    <option>
+                        Select
+                    </option>
+                    {allTeams?.map((teams) => {
+                        return (
+                            <option value={teams.id} key={teams.name} >
+                                {teams.name}
+                            </option>
+                        )
+                    })}
+                </select>
+                {errors.teams !== '' ? <span>{errors.teams}</span> : ''}
+                <hr />
+                <label htmlFor="description" className={style.label} >Descripción: </label>
+                <input className={style.formInput} type="text" id='' value={form.description} name='description' placeholder='Breve descripción...' onChange={handlerFormChange}/>
+                {errors.description !== '' ? <span>{errors.description}</span> : ''}
+                <hr />
+                <button className={style.button} type='submit' >Crear Piloto</button>
+            </form>
+        </div>
     )
 };
 

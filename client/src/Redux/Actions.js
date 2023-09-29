@@ -43,7 +43,7 @@ const link = 'http://localhost:3001';
     }
 };
 
- function create (form){
+ export function create (form){
     try {
         return async (dispatch) => {
             const response = await axios.post(`${link}/drivers`, form)
@@ -75,4 +75,4 @@ const link = 'http://localhost:3001';
 //         })
 //     }
 // };
-export default {getDrivers, getTeams, getByName, getById, create };
+export default {getDrivers, getTeams, getByName, getById };

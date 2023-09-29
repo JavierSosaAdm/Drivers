@@ -1,0 +1,74 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    color: #fff;
+    font-size: 20px;
+  }
+  
+  /* Estilo para las etiquetas de formulario */
+  label {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    justify-content: center;
+    padding: 0.1rem;
+    color:chartreuse;
+    font-weight: bold;
+  }
+  
+  /* Estilo para los campos de entrada de texto y textarea */
+  .formInput{
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  .formTextarea {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  
+  /* Estilo para el botón de submit */
+  .button {
+    cursor: pointer;
+    border-radius: 1rem;
+    color: rgb(238, 240, 243);
+    background-color: rgb(79, 79, 184);
+    font-weight: bold;
+    padding: 0.5rem;
+    }
+    
+    .button:hover {
+        color: rgb(234, 14, 14);
+        padding: 0.7rem;
+        transition: 0.5s;
+        background-color: rgba(78, 78, 149, 0.685);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  
+  /* Efecto hover en el botón de submit */
+  
+
+  .containerplats{
+    display: flex;
+    flex-direction: column;
+    max-height: 200px; 
+  overflow-y: scroll;
+  justify-items: center;
+  }
+
+  details{
+    display: flex;
+    max-width: 250px;
+  }
+
+  input[type="checkbox"] {
+    margin-left: 5px;
+    font-weight: bold;
+  }
