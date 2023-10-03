@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import getByName from '../../Redux/Actions'
+import { getByName } from '../../Redux/Actions'
 
 const Nav = () => {
     const [searchString, setSearchString] = useState('');

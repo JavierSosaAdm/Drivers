@@ -33,7 +33,7 @@ export const getByName = (name) => {
     }
 };
 
-const getById = (id) => {
+export const getById = (id) => {
     return async (dispatch) => {
         const response = await axios.get(`${link}/drivers/${id}`)
         return dispatch({
@@ -75,4 +75,4 @@ export const filter = (e) => {
 //         })
 //     }
 // };
-export default { getByName, getById };
+

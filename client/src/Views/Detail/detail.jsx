@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
-import getById from '../../Redux/Actions';
+import { getById } from '../../Redux/Actions';
 const Detail = () => {
     const navigate = useNavigate();
     const locarion = useLocation();
@@ -16,13 +16,13 @@ const Detail = () => {
     }, [id]);
 
     useEffect(()=> {
-        setDriver(driver);
-        return {}
-    }, [driver]);
-
+        setDriver(detail);
+    }, [detail]);
+    
     const handlerNavigate = () => {
         navigate('/home')
-    }
+    };
+
     console.log(detail);
     return(
         <div>

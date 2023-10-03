@@ -59,7 +59,7 @@ const Form = () => {
         event.preventDefault();
         dispatch(create(form))
     };
-    console.log(allTeams);
+    
     return(
         <div>
             <h1>Formulario de creación del corredor</h1>

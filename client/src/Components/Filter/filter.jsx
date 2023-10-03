@@ -2,6 +2,7 @@ import { useSelector, useDispatch} from 'react-redux';
 import { useState } from 'react';
 import Cards from '../Cards/cards';
 import { filter } from '../../Redux/Actions';
+import style from './filter.module.css'
 
 const Filter = () => {
     const allDrivers = useSelector(state => state.allDrivers);
@@ -16,18 +17,18 @@ const Filter = () => {
     const filteredDrivers = filtrado
     ? allDrivers.filter((driver) => driver.teams?.includes(filtrado))
     : allDrivers
-    console.log(filteredDrivers);
+    
 
     return (
-        <div>
-            <label htmlFor="teams">Filtrar por Escudería: </label>
-                <select name="" id="" onChange={handlerChange} value={filtrado}>
+        <div className={style.div} >
+            <label className={style.label} htmlFor="teams">Filtrar por Escudería: </label>
+                <select onChange={handlerChange} value={filtrado}>
                     <option value="">
                         Select
                     </option>
                     {allTeams.map((team) => {
                         return (
-                            <option value={team.name} key={team.name}>
+                            <option value={team.name} key={team.id}>
                                 {team.name}
                             </option>
                         )

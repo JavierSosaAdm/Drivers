@@ -1,0 +1,18 @@
+.container{
+    display: flex;
+  flex-flow: wrap-reverse;
+  
+  justify-content: space-between;
+  background-color: #25192ab9;
+  opacity: 95%;
+  padding: 2em;
+  border-radius: 15px;
+  box-shadow: 10px 10px 5px 0px rgba(233, 160, 81, 0.75);
+  max-width: 90%;
+  width: 100%;
+  margin: auto;
+}
+
+.paginado {
+ flex-direction: row;
+}
