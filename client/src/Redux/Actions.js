@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const link = 'http://localhost:3001';
 
- function getDrivers () {
+export const getDrivers = () => {
     return async (dispatch) => {
 
         const response = await axios.get(`${link}/drivers`)
@@ -13,7 +13,7 @@ const link = 'http://localhost:3001';
     }
 };
 
- function getTeams (){
+export const getTeams = () => {
     return async (dispatch) => {
         const response = await axios.get(`${link}/teams`)
         return dispatch({
@@ -23,7 +23,7 @@ const link = 'http://localhost:3001';
     }
 };
 
- function getByName (name){
+export const getByName = (name) => {
     return async (dispatch) => {
         const response = await axios.get(`${link}/search?name=${name}`)
         return dispatch({
@@ -33,7 +33,7 @@ const link = 'http://localhost:3001';
     }
 };
 
- function getById (id){
+const getById = (id) => {
     return async (dispatch) => {
         const response = await axios.get(`${link}/drivers/${id}`)
         return dispatch({
@@ -43,7 +43,7 @@ const link = 'http://localhost:3001';
     }
 };
 
- export function create (form){
+ export const create = (form) => {
     try {
         return async (dispatch) => {
             const response = await axios.post(`${link}/drivers`, form)
@@ -58,6 +58,15 @@ const link = 'http://localhost:3001';
     }
 };
 
+export const filter = (e) => {
+    return async (dispatch) => {
+        return dispatch({
+            type: 'FILTER_TEAMS',
+            payload: e
+        })
+    }
+};
+
 // export function (){
 //     return async (dispatch) => {
 //         const response = await axios.get()
@@ -66,13 +75,4 @@ const link = 'http://localhost:3001';
 //         })
 //     }
 // };
-
-// export function (){
-//     return async (dispatch) => {
-//         const response = await axios.get()
-//         return dispatch({
-
-//         })
-//     }
-// };
-export default {getDrivers, getTeams, getByName, getById };
+export default { getByName, getById };

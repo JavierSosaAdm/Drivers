@@ -153,3 +153,27 @@ const getTeams= async () => {
     
 };
 module.exports = {create, getInfo, getByName, getById, getTeams};
+
+// const getTeams= async () => {
+//     const dataTeams = await Teams.findAll()
+//     const cleanTeams = new Set(); 
+
+//     if (dataTeams.length === 0) {
+//         const allDrivers = [];
+//         const teams = (await axios.get(`${API_URL}/drivers`)).data
+//         teams.map((driver) => allDrivers.push(driver.teams));
+
+//         teams.forEach((driver) => {
+//             if(driver.teams) {
+//                 const teamsArr = driver.teams.split(',').map((elem) => elem.trim());
+//                 teamsArr.forEach((teamName) => {
+//                     cleanTeams.add(teamName)  
+//                 });
+//             } 
+//         })
+//     }
+//     const teamsOK = Array.from(cleanTeams).map((nombre) => ({
+//         teamName: nombre
+//     }));
+//     await Teams.bulkCreate(teamsOK);
+//     return dataTeams;

@@ -17,7 +17,7 @@ const Nav = () => {
         dispatch(getByName(searchString));
     };
 
-console.log(searchString);
+
 
     return (
         <div>
