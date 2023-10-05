@@ -4,7 +4,8 @@ import {
      GET_TEAMS,
      GET_BY_NAME,
      GET_BY_ID,
-     ORDER_BY_ASC,
+     SORT_ASC,
+     SORT_DESC,
      FILTER_BY_TEAM,
      FILTER_BY_CREATED
  } from './ActionsTypes'
@@ -14,7 +15,8 @@ import {
     allTeams: [], 
     detail: [], 
     copyAllDrivers: [],
-    name: []
+    name: [],
+    sortOrder: 'ASC'
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -24,7 +26,7 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 allDrivers: action.payload,
                 copyAllDrivers: action.payload
-            };
+            }
         case GET_BY_NAME:
             return {
                 ...state,
@@ -45,7 +47,19 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 allTeams: action.payload
-            };
+            }
+        case SORT_ASC:
+            return {
+                ...state,
+                allDrivers: state.allDrivers.slice().sort((a, b) => a.lastName.localeCompare(b.lastName)),
+                sortOrder: 'ASC'
+            }
+        case SORT_DESC:
+            return {
+                ...state,
+                allDrivers: state.allDrivers.slice().sort((a, b) =>b.lastName.localeCompare(a.lastName)),
+                sortOrder: 'DESC'
+            }
         default:
             return {...state};
     }

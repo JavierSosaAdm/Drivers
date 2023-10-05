@@ -67,6 +67,14 @@ export const filter = (e) => {
     }
 };
 
+export const sortASC = () => ({
+    type: 'SORT_ASC'
+});
+
+export const sortDESC = () => ({
+    type: 'SORT_DESC'
+});
+
 // export function (){
 //     return async (dispatch) => {
 //         const response = await axios.get()

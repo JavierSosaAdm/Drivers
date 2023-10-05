@@ -16,7 +16,7 @@ const Nav = () => {
         e.priventDefault();
         dispatch(getByName(searchString));
     };
-
+    console.log(searchString);
 
 
     return (
