@@ -11,13 +11,12 @@ const Cards = ({filteredDrivers, sortedCards}) => {
 
     return (
         <div className={style.container} >
-            {sortedCards?.slice((currentPage - 1) * items, (currentPage - 1)* items + items).map((driver) => (
+            
+            {filteredDrivers? filteredDrivers.slice((currentPage - 1) * items, (currentPage - 1)* items + items).map((driver) => (
                 <li key={driver.id}>
                     <Card driver={driver}/>
                 </li>
-            ))}
-            
-            {filteredDrivers?.slice((currentPage - 1) * items, (currentPage - 1)* items + items).map((driver) => (
+            )) : sortedCards?.slice((currentPage - 1) * items, (currentPage - 1)* items + items).map((driver) => (
                 <li key={driver.id}>
                     <Card driver={driver}/>
                 </li>
