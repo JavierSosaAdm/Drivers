@@ -7,4 +7,5 @@ export const FILTER_BY_TEAM = 'FILTER_BY_TEAM';
 export const FILTER_BY_CREATED = 'FILTER_BY_CREATED';
 export const SORT_ASC = 'SORT_ASC';
 export const SORT_DESC = 'SORT_DESC';
-
+export const SORT_ASC_DATE = 'SORT_ASC_DATE';
+export const SORT_DESC_DATE = 'SORT_DESC_DATE';

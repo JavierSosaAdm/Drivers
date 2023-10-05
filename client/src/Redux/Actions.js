@@ -75,12 +75,10 @@ export const sortDESC = () => ({
     type: 'SORT_DESC'
 });
 
-// export function (){
-//     return async (dispatch) => {
-//         const response = await axios.get()
-//         return dispatch({
+export const sortDateASC = () => ({
+    type: 'SORT_ASC_DATE'
+})
 
-//         })
-//     }
-// };
-
+export const sortDateDESC = () => ({
+    type: 'SORT_DESC_DATE'
+})

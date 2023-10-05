@@ -7,7 +7,9 @@ import {
      SORT_ASC,
      SORT_DESC,
      FILTER_BY_TEAM,
-     FILTER_BY_CREATED
+     FILTER_BY_CREATED,
+     SORT_ASC_DATE,
+     SORT_DESC_DATE
  } from './ActionsTypes'
 
  let initialState = { 
@@ -60,6 +62,18 @@ const rootReducer = (state = initialState, action) => {
                 allDrivers: state.allDrivers.slice().sort((a, b) =>b.lastName.localeCompare(a.lastName)),
                 sortOrder: 'DESC'
             }
+        case SORT_ASC_DATE:
+            return {
+                ...state,
+                allDrivers: state.allDrivers.slice().sort((a, b) => a.birthdate.localeCompare(b.birthdate)),
+                sortOrder: 'ASC'
+            }
+        case SORT_DESC_DATE:
+            return {
+                ...state,
+                allDrivers: state.allDrivers.slice().sort((a, b) => b.birthdate.localeCompare(a.birthdate)),
+            }
+
         default:
             return {...state};
     }

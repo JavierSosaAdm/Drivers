@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Cards from '../Cards/cards';
 import { filter } from '../../Redux/Actions';
 import style from './filter.module.css';
-import { sortASC, sortDESC } from '../../Redux/Actions';
+import { sortASC, sortDESC, sortDateASC, sortDateDESC } from '../../Redux/Actions';
 
 const Filter = () => {
     const allDrivers = useSelector(state => state.allDrivers);
@@ -11,6 +11,14 @@ const Filter = () => {
     const sortOrder = useSelector(state => state.sortOrder);
     const [filtrado, setFiltrado] = useState('');
     const dispatch = useDispatch();
+
+    const handlerSortDateASC = () => {
+        dispatch(sortDateASC());
+    };    
+
+    const handlerSortDateDESC = () => {
+        dispatch(sortDateDESC());
+    };
 
     const handlerSortASC = () => {
         dispatch(sortASC());
@@ -45,9 +53,16 @@ const Filter = () => {
                         )
                     })}
                 </select>
-            <label>Oodenar por nombre: </label>
-            <button onClick={handlerSortASC}>Ascendente</button>
-            <button onClick={handlerSortDESC}>Descendente</button>
+            <div>
+                <label>Ordenar por nombre: </label>
+                <button onClick={handlerSortASC}>Ascendente</button>
+                <button onClick={handlerSortDESC}>Descendente</button>
+            </div>
+            <div>
+                <label>Ordenar por nacimiento: </label>
+                <button onClick={handlerSortDateASC}>Ascendente</button>
+                <button onClick={handlerSortDateDESC}>Descendente</button>
+            </div>
                 
             <Cards filteredDrivers={filteredDrivers} sortedCards={sortedCards}/>
         </div>
