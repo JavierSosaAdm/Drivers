@@ -67,6 +67,14 @@ export const filter = (e) => {
     }
 };
 
+export const filterOrigin = (e) => {
+    return async (dispatch) => {
+        return dispatch({
+            type: 'FILTER_ORIGIN',
+            payload: e
+        })
+    }
+}
 export const sortASC = () => ({
     type: 'SORT_ASC'
 });

@@ -10,6 +10,7 @@ const Filter = () => {
     const allTeams = useSelector(state => state.allTeams);
     const sortOrder = useSelector(state => state.sortOrder);
     const [filtrado, setFiltrado] = useState('');
+    const [origin, setOrigin] = useState('');
     const dispatch = useDispatch();
 
     const handlerSortDateASC = () => {
@@ -28,6 +29,10 @@ const Filter = () => {
         dispatch(sortDESC());
     };
 
+    const handlerFilterOrigin = (e) => {
+        setOrigin(e.target.value)
+    };
+
     const handlerChange = (e) => {
         setFiltrado(e.target.value)
     };
@@ -35,8 +40,16 @@ const Filter = () => {
     const filteredDrivers = filtrado
     ? allDrivers.filter((driver) => driver.teams?.includes(filtrado))
     : allDrivers
+       
+    let filteredOrigin = [...filteredDrivers];
+
+    if (origin === 'numeric') {
+        filteredOrigin = filteredDrivers.filter((driver) => typeof driver.id === 'number');
+    } else if (origin === 'uuid') {
+        filteredOrigin = filteredDrivers.filter((driver) => typeof driver.id !== 'number');
+    }
     
-    const sortedCards = sortOrder === 'ASC' ? allDrivers : allDrivers.slice().reverse(); 
+    const sortedCards = sortOrder === 'ASC' ? filteredDrivers : filteredDrivers.slice().reverse(); 
     
     return (
         <div className={style.div} >
@@ -53,10 +66,17 @@ const Filter = () => {
                         )
                     })}
                 </select>
+            <label htmlFor="origin">Filtrar por Origen: </label>
+                <select onChange={handlerFilterOrigin} value={origin}>
+                    <option value="">Seleccionar origen</option>
+                    <option value="numeric">API</option>
+                    <option value="uuid">DATABASE</option>
+                </select>
+
             <div>
                 <label>Ordenar por nombre: </label>
-                <button onClick={handlerSortASC}>Ascendente</button>
-                <button onClick={handlerSortDESC}>Descendente</button>
+                <button onClick={handlerSortASC}>A-Z</button>
+                <button onClick={handlerSortDESC}>Z-A</button>
             </div>
             <div>
                 <label>Ordenar por nacimiento: </label>
@@ -64,7 +84,7 @@ const Filter = () => {
                 <button onClick={handlerSortDateDESC}>Descendente</button>
             </div>
                 
-            <Cards filteredDrivers={filteredDrivers} sortedCards={sortedCards}/>
+            <Cards filteredDrivers={filteredDrivers} sortedCards={sortedCards} filteredOrigin={filteredOrigin}/>
         </div>
     )
 };

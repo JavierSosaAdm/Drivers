@@ -7,7 +7,7 @@ import {
      SORT_ASC,
      SORT_DESC,
      FILTER_BY_TEAM,
-     FILTER_BY_CREATED,
+     FILTER_ORIGIN,
      SORT_ASC_DATE,
      SORT_DESC_DATE
  } from './ActionsTypes'
@@ -18,7 +18,8 @@ import {
     detail: [], 
     copyAllDrivers: [],
     name: [],
-    sortOrder: 'ASC'
+    sortOrder: 'ASC',
+    originFilter: ''
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -73,7 +74,11 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 allDrivers: state.allDrivers.slice().sort((a, b) => b.birthdate.localeCompare(a.birthdate)),
             }
+        case FILTER_ORIGIN:
+            return {
+                ...state,
 
+            }
         default:
             return {...state};
     }
