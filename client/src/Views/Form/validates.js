@@ -4,13 +4,11 @@ const validates = async (form, errors, setErrors) => {
 
     if (form.name) {
         
-            if (/^[A-Z][a-z]*(?:\s[A-Z][a-z]*)*$/.test(form.name)) {
+            if (/^[A-Z][a-z]*$/.test(form.name)) {
                 setErrors(prev =>({...prev, name: ''}))
             } else {
                 setErrors(prev => ({...prev, name: '*Nombre inválido'}))
-            }  
-        
-            
+            }        
     }; 
 
     if (form.lastName) {
@@ -19,11 +17,7 @@ const validates = async (form, errors, setErrors) => {
                 setErrors(prev =>({...prev, lastName: ''}))
             } else {
                 setErrors(prev => ({...prev, name: '*Apellido inválido'}))
-            };
-            
-        
-            
-        
+            };   
     };
 
     if (form.description) {
@@ -32,9 +26,7 @@ const validates = async (form, errors, setErrors) => {
                 setErrors(prev =>({...prev, description: ''}))
             } else {
                 setErrors(prev => ({...prev, name: '*Debe agregar una descripción del piloto'}))
-            };
-            
-        
+            };   
     };
 
     if (form.image) {
@@ -43,9 +35,7 @@ const validates = async (form, errors, setErrors) => {
                 setErrors(prev => ({...prev, image: ''}))
             } else {
                 setErrors(prev => ({...prev, image: '*Debe agregar una imagen'}))
-            };
-         
-        
+            };   
     };
 
     if (form.nationality) {
@@ -54,34 +44,29 @@ const validates = async (form, errors, setErrors) => {
                 setErrors(prev => ({...prev, nationality: ''}))
             } else {
                 setErrors(prev => ({...prev, nationality: '*Debe agregar la nacionalidad del corredor'}))
-            };
-            
-       
-        
+            }; 
     };
 
     if (form.birthdate) {
         
-            if (/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/.test(form.birthdate)) {
+            if (/^\d{4}\/(0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01])$/.test(form.birthdate)) {
                 setErrors(prev => ({...prev, birthdate: ''}))
             } else {
-                setErrors(prev => ({...prev, birthdate: '*debe agregar fecha de nacimiento '}))
+                setErrors(prev => ({...prev, birthdate: '*La fecha debe ser del formato AAAA/MM/DD'}))
             };
-          
-        
     };
 
-    if (form.teams) {
+    // if (form.teams) {
         
-            if (/^[a-zA-Z0-9\s]+$/.test(form.teams)) {
-                setErrors(prev => ({...prev, teams: ''}))
-            } else {
-                setErrors(prev => ({...prev, teams: '*Debe elegir al menos una Escudería'}))
-            };
+    //         if (/^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89AB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$/.test(form.teams)) {
+    //             setErrors(prev => ({...prev, teams: ''}))
+    //         } else {
+    //             setErrors(prev => ({...prev, teams: '*Debe elegir al menos una Escudería'}))
+    //         };
             
       
         
-    }; 
+    // }; 
 };
 
 export default validates;

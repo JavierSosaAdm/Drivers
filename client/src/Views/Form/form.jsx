@@ -6,16 +6,16 @@ import { create, getTeams } from '../../Redux/Actions';
 import validates from './validates';
 import style from './form.module.css';
 const Form = () => {
-    const link = 'http://localhost:30001'
+
     const dispatch = useDispatch();
     const allTeams = useSelector((state) => state.allTeams)
-    const [Teams, setTeams] = useState([]);
+    const [teams, setTeams] = useState([]);
     const [selectedTeam, setSelectedTeam] = useState([]);
 
     useEffect(() => {
-       setTeams(allTeams)
+
        dispatch(getTeams())
-    }, []);
+    }, [dispatch]);
 
     const [form, setForm] = useState({
         name: '',
@@ -27,7 +27,17 @@ const Form = () => {
         teams: []
     });
 
-    let [errors, setErrors] = useState({});
+    let [errors, setErrors] = useState({
+        name: '',
+        lastName: '',
+        description: '',
+        image: '',
+        nationality: '',
+        birthdate: '',
+        teams: '',
+    });
+
+    const [isFormValid, setIsFormValid] = useState(false);
 
     function handlerFormChange (event) {
         if (event.target) {
@@ -39,34 +49,44 @@ const Form = () => {
                 [name]: value // bindear los event.target.value del estado y de los input (para evitar cambios)
             });
 
+            const newErrors = { ...errors };
+
             validates({
                 ...form,
                 [name]: value
-            }, errors, setErrors);
+            }, 
+            newErrors,
+            setErrors
+            );
+            const hasErrors = Object.values(newErrors).some((error) => error !== '');
+            setIsFormValid(!hasErrors);
         };
     };
 
     function handlerSelectChance (event) {
-        if (selectedTeam.length > 0) {
-            return
+        if (form.teams.length > 0) {
+            return;
         }
 
-        selectedTeam((prev) => [...prev, event.target.value])
-        setForm(prev => ({...prev, teams: [...prev.teams, event.target.value]}))
+        setForm((prev) => ({
+            ...prev,
+             teams: [...prev.teams, event.target.value],
+            }));
     }
 
-    function handlerSumit (event) {
+    function handlerSubmit (event) {
         event.preventDefault();
         dispatch(create(form))
     };
-    
+    console.log(form);
+
     return(
         <div>
             <h1>Formulario de creación del corredor</h1>
             <Link to='/home'>
                 <button className={style.button} >Volver al menú pricipal</button>
             </Link>
-            <form onSubmit={handlerSumit} className={style.form} >
+            <form onSubmit={handlerSubmit} className={style.form} >
                 <label htmlFor="name" className={style.label} >Nombre: </label>
                 <input className={style.formInput} type="text" id='' value={form.name} name='name' placeholder='Escribir nombre...' onChange={handlerFormChange} />
                 {errors.name !== '' ? <span>{errors.name}</span> : ''}
@@ -94,19 +114,19 @@ const Form = () => {
                     </option>
                     {allTeams?.map((teams) => {
                         return (
-                            <option value={teams.id} key={teams.name} >
+                            <option value={teams.id} key={teams.id} >
                                 {teams.name}
                             </option>
                         )
                     })}
                 </select>
-                {errors.teams !== '' ? <span>{errors.teams}</span> : ''}
+                {errors.teams === '' ? <span>{errors.teams}</span> : ''}
                 <hr />
                 <label htmlFor="description" className={style.label} >Descripción: </label>
                 <input className={style.formInput} type="text" id='' value={form.description} name='description' placeholder='Breve descripción...' onChange={handlerFormChange}/>
                 {errors.description !== '' ? <span>{errors.description}</span> : ''}
                 <hr />
-                <button className={style.button} type='submit' >Crear Piloto</button>
+                <button className={style.button} type='submit' disabled={!isFormValid} >Crear Piloto</button>
             </form>
         </div>
     )
