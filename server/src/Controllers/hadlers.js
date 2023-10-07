@@ -31,10 +31,10 @@ const getHandrlerTeam = async (req, res) => {
 };
 
 const handlerName = async (req, res) => {
-    const { name, lastName } = req.query;
+    const { name } = req.query;
 
     try {
-        const response = await getByName(name, lastName);
+        const response = await getByName(name);
         res.status(200).json(response);
     } catch (error) {
         res.status(400).json({ error: error.message});
