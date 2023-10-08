@@ -23,7 +23,7 @@ const Detail = () => {
         navigate('/home')
     };
 
-    console.log(detail);
+   
     return(
         <div>
             <h1>Detalles de pilotos</h1>
@@ -31,7 +31,7 @@ const Detail = () => {
                 <h2>{driver?.name}</h2>
                 <h2>{driver?.lastName}</h2>
                 <img src={driver?.image} alt="Imagen del piloto" />
-                <p>Escudería/as: {driver?.teams}</p>
+                <p>Escudería/as: {driver.team ? driver.team.map((team) => team.name) : []}</p>
                 <p>Nacionalidad: {driver?.nationality}</p>
                 <p>Fecha de nacimiento: {driver?.birthdate}</p>
                 <p>Descripción: {driver?.description} </p>

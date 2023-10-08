@@ -78,7 +78,7 @@ const Form = () => {
         event.preventDefault();
         dispatch(create(form))
     };
-    console.log(form);
+    
 
     return(
         <div>

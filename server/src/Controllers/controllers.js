@@ -56,7 +56,17 @@ const getInfo = async () => {
             teams: driver.teams
         }
     })
-    const driversDB = await Driver.findAll();
+    const driversDB = await Driver.findAll({
+        include: [
+            {
+                model: Teams,
+                as: 'team',
+                attributes: ['name'],
+                through: { attributes: [] }
+            }
+        ]
+    });
+    
     return [...driversDB, ...driversAPI]
 };
 

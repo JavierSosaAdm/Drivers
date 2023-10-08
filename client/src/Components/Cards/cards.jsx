@@ -10,7 +10,7 @@ const Cards = ({filteredDrivers, sortedCards, filteredOrigin}) => {
     const max = Math.ceil(filteredDrivers.length / items);
 
     const driversConbinados = filteredOrigin.length > 0 ? filteredOrigin : filteredDrivers;
-    console.log(driversConbinados);
+    
     return (
         <div className={style.container} >
             
