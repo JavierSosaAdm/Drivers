@@ -64,7 +64,7 @@ const Form = () => {
     };
 
     function handlerSelectChance (event) {
-        if (form.teams.length > 0) {
+        if (form.teams.length > 2) {
             return;
         }
 
