@@ -1,9 +1,9 @@
 const axios = require('axios');
-const { Sequelize } = require('sequelize');
+const { Op, Sequelize } = require('sequelize');
 const { Driver, Teams } = require('../db');
 // require('dotenv').config();
 // const { API_URL } = process.env;
-const Op = Sequelize.Op;
+// const Op = Sequelize.Op;
 const API_URL = 'http://localhost:5000'
 
 
@@ -72,8 +72,24 @@ const getInfo = async () => {
 
 
 const getByName= async (name) => {
-    const response = (await axios.get(`${API_URL}/drivers?name.forename=${name}`)).data;
-    const driversAPI = response.map((driver) => {
+    // if (typeof name === 'string') 
+    //     const nameLower = name.toLowerCase();
+    //     const name = nameLower.charAt(0).toUpperCase() + nameLower.slice(1)
+        
+    
+    const driverDB = await Driver.findAll({
+        where: {
+            name: {
+                [Op.iLike]: `${name}`
+            }
+        }
+    });
+
+    const response = (await axios.get(`${API_URL}/drivers`)).data
+    const filterName = response.filter((driver) => {
+        return driver.name.forename.includes(name)
+    })
+    const driverAPI = filterName.map((driver) =>{
         return {
             id: driver.id,
             name: driver.name.forename,
@@ -85,14 +101,10 @@ const getByName= async (name) => {
             teams: driver.teams
         }
     })
-    const driversDB = await Driver.findAll({
-        where: {
-            name: {
-                [Op.iLike]: `${name}`
-            }
-        }
-    });
-    return [...driversDB, ...driversAPI]
+
+    const result = [...driverDB, ...driverAPI]
+
+    return result
     };
 
 
