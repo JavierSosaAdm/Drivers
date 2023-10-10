@@ -8,7 +8,7 @@ const Nav = () => {
     const dispatch = useDispatch();
 
     const handlerChange = (e) => {
-        e.priventDefault();
+        // e.priventDefault();
         setName(e.target.value);
     };
 
