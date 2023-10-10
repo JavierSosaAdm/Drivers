@@ -7,7 +7,7 @@ const Card = ({driver}) => {
     function handlerNavigate () {
         navigate(`/detail/${id}`);
     }
-    console.log(teams);
+    
     return (
         <div className={style.card} >
             <p className={style.name} >{name}</p>

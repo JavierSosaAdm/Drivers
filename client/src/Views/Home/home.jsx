@@ -9,7 +9,9 @@ const Home = () => {
 
     const allDrivers = useSelector((state) => state.allDrivers);
     const [totalDrivers, setTotalDrivers] = useState([]);
+    
     const dispatch = useDispatch();
+    
 
     useEffect(()=> {
         setTotalDrivers(allDrivers);
@@ -20,7 +22,6 @@ const Home = () => {
         dispatch(getTeams())
     }, []);
 
-    
     return (
         <div>
             <h1>Home</h1>

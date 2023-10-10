@@ -25,11 +25,15 @@ export const getTeams = () => {
 
 export const getByName = (name) => {
     return async (dispatch) => {
-        const response = await axios.get(`${link}/search?name=${name}`)
-        return dispatch({
-            type: 'GET_BY_NAME',
-            payload: response.data
-        })
+        try {
+            const response = await axios.get(`${link}/search?name=${name}`)
+                dispatch({
+                    type: 'GET_BY_NAME',
+                    payload: response.data
+                })
+        } catch (error) {
+            console.log(error);
+        }    
     }
 };
 
