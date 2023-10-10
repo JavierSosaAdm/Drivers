@@ -72,22 +72,22 @@ const getInfo = async () => {
 
 
 const getByName= async (name) => {
-    // if (typeof name === 'string') 
-    //     const nameLower = name.toLowerCase();
-    //     const name = nameLower.charAt(0).toUpperCase() + nameLower.slice(1)
+    
+        const nameLower = name.toLowerCase();
+        const Name = nameLower.charAt(0).toUpperCase() + nameLower.slice(1)
         
     
     const driverDB = await Driver.findAll({
         where: {
             name: {
-                [Op.iLike]: `${name}`
+                [Op.iLike]: `${Name}`
             }
         }
     });
 
     const response = (await axios.get(`${API_URL}/drivers`)).data
     const filterName = response.filter((driver) => {
-        return driver.name.forename.includes(name)
+        return driver.name.forename.includes(Name)
     })
     const driverAPI = filterName.map((driver) =>{
         return {
