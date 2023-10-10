@@ -3,7 +3,7 @@ const { handlerCreate, getHandlerInfo, handlerName, handlerId } = require('../Co
 
 const driverRouter = Router()
 
-driverRouter.post('/drivers', handlerCreate); // CASI TERMINADO
+driverRouter.post('/drivers', handlerCreate); // TERMINADO
 driverRouter.get('/drivers', getHandlerInfo); //TERMINADO
 driverRouter.get('/search', handlerName); // falta el toLowerCase();
 driverRouter.get('/drivers/:id', handlerId); // TERMINADO
