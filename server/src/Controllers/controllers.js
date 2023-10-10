@@ -73,11 +73,11 @@ const getInfo = async () => {
 
 const getByName= async (name) => {
     
-        const nameLower = name.toLowerCase();
-        const Name = nameLower.charAt(0).toUpperCase() + nameLower.slice(1)
-        
+    const nameLower = name.toLowerCase();
+    const Name = nameLower.charAt(0).toUpperCase() + nameLower.slice(1)
     
-    const driverDB = await Driver.findAll({
+    
+    const nameDB = await Driver.findAll({
         where: {
             name: {
                 [Op.iLike]: `${Name}`
@@ -85,9 +85,21 @@ const getByName= async (name) => {
         }
     });
 
+    const lastNameDB = await Driver.findAll({
+        where: {
+            lastName: {
+                [Op.iLike]: `${Name}`
+            }
+        }
+    })
+    
+    const driverDB = [...nameDB, ...lastNameDB]
+
     const response = (await axios.get(`${API_URL}/drivers`)).data
     const filterName = response.filter((driver) => {
-        return driver.name.forename.includes(Name)
+        return driver.name.forename.includes(Name) 
+        ? driver.name.forename.includes(Name) 
+        : driver.name.surname.includes(Name)
     })
     const driverAPI = filterName.map((driver) =>{
         return {
