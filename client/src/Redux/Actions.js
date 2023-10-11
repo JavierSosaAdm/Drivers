@@ -3,8 +3,9 @@ import axios from 'axios';
 const link = 'http://localhost:3001';
 
 export const getDrivers = () => {
-    return async (dispatch) => {
-
+    return async (dispatch) => { // es un retorno de una arrow function asincrona donde se declara una variable 
+                                 // y se hace el axios get al link/drivers y se retirna un dispatch donde debe haber un 
+                                 // objeto con el type: 'GETlo que sea' y el payload: response data
         const response = await axios.get(`${link}/drivers`)
         return dispatch({
             type: 'GET_ALL_DRIVERS',
