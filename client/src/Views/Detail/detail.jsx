@@ -32,7 +32,7 @@ const Detail = () => {
                 <h2>{driver?.name}</h2>
                 <h2>{driver?.lastName}</h2>
                 <img src={driver?.image} alt="Imagen del piloto" className={style.img} />
-                <p>Escudería/as: {driver.team ? driver.team.map((team) => team.name) : []}</p>
+                <p>Escudería/as: {driver.team ? driver.team.map((team) => team.name) : driver.teams ? driver.teams : 'Piloto sin escudería'}</p>
                 <p>Nacionalidad: {driver?.nationality}</p>
                 <p>Fecha de nacimiento: {driver?.birthdate}</p>
                 <p>Descripción: {driver?.description} </p>
