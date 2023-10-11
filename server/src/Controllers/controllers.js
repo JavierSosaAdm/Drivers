@@ -154,24 +154,36 @@ const getById = async (id) => {
     };
 };
 
-const getTeams= async () => {
-    const data = await Teams.findOne()
-    
+const getTeams = async () => {
+    const data = await Teams.findOne();
+  
     if (!data) {
-        const teams = (await axios.get(`${API_URL}/drivers`)).data
-        const teamsAPI = teams.map((team) => {
-            return {
-                name: team.teams? team.teams : 'piloto sin equipo',
-            }
-        });
-        const teamsDB = await Teams.bulkCreate(teamsAPI)
-        return [...teamsDB]
+      const teamsAPI = (await axios.get(`${API_URL}/drivers`)).data;
+  
+      // Extraer y combinar todos los nombres de equipos
+      const allTeams = teamsAPI.flatMap((driver) =>
+        driver.teams ? driver.teams.split(',') : ['piloto sin equipo']
+      );
+  
+      // Crear un conjunto (Set) para eliminar duplicados y obtener nombres únicos
+      const uniqueTeamsSet = new Set(allTeams);
+  
+      // Convertir el conjunto de vuelta a un array
+      const uniqueTeamsArray = [...uniqueTeamsSet];
+  
+      // Crear objetos con el formato { name: nombreDelEquipo }
+      const teamsData = uniqueTeamsArray.map((teamName) => ({ name: teamName }));
+  
+      // Insertar los objetos en la base de datos
+      const teamsDB = await Teams.bulkCreate(teamsData);
+  
+      return teamsDB;
     } else {
-        const dataComplete = await Teams.findAll();
-        return dataComplete
+      const dataComplete = await Teams.findAll();
+      return dataComplete;
     }
-    
-};
+  };
+  
 module.exports = {create, getInfo, getByName, getById, getTeams};
 
 // const getTeams= async () => {
