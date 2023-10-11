@@ -14,7 +14,7 @@ const Cards = ({filteredDrivers, sortedCards, filteredOrigin}) => {
     return (
         <div className={style.divContainer} >
             <div className={style.paginado}>
-                <Paginado currentPage={currentPage} setCurrentPage={setCurrentPage} max={max} />
+                <Paginado currentPage={currentPage} setCurrentPage={setCurrentPage} max={max} driversConbinados={driversConbinados}/>
             </div>
 
             <div className={style.container} >

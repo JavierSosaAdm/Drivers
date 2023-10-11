@@ -5,54 +5,54 @@ const validates = async (form, errors, setErrors) => {
     if (form.name) {
         
             if (/^[A-Z][a-z]*$/.test(form.name)) {
-                setErrors(prev =>({...prev, name: ''}))
+                setErrors((prev) =>({...prev, name: ''}))
             } else {
-                setErrors(prev => ({...prev, name: '*Nombre inválido'}))
+                setErrors((prev) => ({...prev, name: '*Nombre inválido'}))
             }        
     }; 
 
     if (form.lastName) {
         
             if (/^[A-Z][a-z]*(?:\s[A-Z][a-z]*)*$/.test(form.lastName)) {
-                setErrors(prev =>({...prev, lastName: ''}))
+                setErrors((prev) =>({...prev, lastName: ''}))
             } else {
-                setErrors(prev => ({...prev, name: '*Apellido inválido'}))
+                setErrors((prev) => ({...prev, lastName: '*Apellido inválido'}))
             };   
     };
 
     if (form.description) {
         
             if (/^[a-zA-Z0-9\s!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]+$/.test(form.description)) {
-                setErrors(prev =>({...prev, description: ''}))
+                setErrors((prev) =>({...prev, description: ''}))
             } else {
-                setErrors(prev => ({...prev, name: '*Debe agregar una descripción del piloto'}))
+                setErrors((prev) => ({...prev, description: '*Debe agregar una descripción del piloto'}))
             };   
     };
 
     if (form.image) {
         
             if (/\.(jpg|jpeg|png|gif|bmp)$/i.test(form.image)) {
-                setErrors(prev => ({...prev, image: ''}))
+                setErrors((prev) => ({...prev, image: ''}))
             } else {
-                setErrors(prev => ({...prev, image: '*Debe agregar una imagen'}))
+                setErrors((prev) => ({...prev, image: '*Debe agregar una imagen'}))
             };   
     };
 
     if (form.nationality) {
         
             if (nacionalidades.test(form.nationality)) {
-                setErrors(prev => ({...prev, nationality: ''}))
+                setErrors((prev) => ({...prev, nationality: ''}))
             } else {
-                setErrors(prev => ({...prev, nationality: '*Debe agregar la nacionalidad del corredor'}))
+                setErrors((prev) => ({...prev, nationality: '*Debe agregar la nacionalidad del corredor'}))
             }; 
     };
 
     if (form.birthdate) {
         
             if (/^\d{4}\/(0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01])$/.test(form.birthdate)) {
-                setErrors(prev => ({...prev, birthdate: ''}))
+                setErrors((prev) => ({...prev, birthdate: ''}))
             } else {
-                setErrors(prev => ({...prev, birthdate: '*La fecha debe ser del formato AAAA/MM/DD'}))
+                setErrors((prev) => ({...prev, birthdate: '*La fecha debe ser del formato AAAA/MM/DD'}))
             };
     };
 

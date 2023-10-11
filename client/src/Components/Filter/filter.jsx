@@ -11,6 +11,7 @@ const Filter = () => {
     const sortOrder = useSelector(state => state.sortOrder);
     const [filtrado, setFiltrado] = useState('');
     const [origin, setOrigin] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
     const dispatch = useDispatch();
 
     const handlerSortDateASC = () => {
@@ -30,11 +31,13 @@ const Filter = () => {
     };
 
     const handlerFilterOrigin = (e) => {
-        setOrigin(e.target.value)
+        setOrigin(e.target.value);
+        setCurrentPage(1);
     };
 
     const handlerChange = (e) => {
-        setFiltrado(e.target.value)
+        setFiltrado(e.target.value);
+        setCurrentPage(1);
     };
 
     const filteredDrivers = filtrado
@@ -49,7 +52,7 @@ const Filter = () => {
         filteredOrigin = filteredDrivers.filter((driver) => typeof driver.id !== 'number');
     }
     
-    const sortedCards = sortOrder === 'ASC' ? filteredDrivers : filteredDrivers.slice().reverse(); 
+    const sortedCards = sortOrder === 'ASC' ? filteredDrivers : [...filteredDrivers].slice().reverse(); 
     
     return (
         <div className={style.div}>
