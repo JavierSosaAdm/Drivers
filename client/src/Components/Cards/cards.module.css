@@ -1,7 +1,6 @@
 .container{
-    display: flex;
+  display: flex;
   flex-flow: wrap-reverse;
-  
   justify-content: space-between;
   background-color: #25192ab9;
   opacity: 95%;
@@ -15,4 +14,5 @@
 
 .paginado {
  flex-direction: row;
+
 }

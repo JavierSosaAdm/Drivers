@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { getTeams, getDrivers } from '../../Redux/Actions'; 
 import Nav from '../../Components/Nav/nav';
 import Filter from '../../Components/Filter/filter';
-import Cards from '../../Components/Cards/cards';
+import style from './home.module.css';
 
 const Home = () => {
 
@@ -23,7 +23,7 @@ const Home = () => {
     }, []);
 
     return (
-        <div>
+        <div className={style.div} >
             <h1>Home</h1>
             <Nav/>
             <Filter/>

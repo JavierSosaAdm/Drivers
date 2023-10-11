@@ -1,0 +1,25 @@
+.div {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 3rem;
+}
+
+.button {
+    margin-left: 1rem;
+}
+
+.button:hover {
+    background-color: red;
+    transition: 0.9s;
+}
+
+.buttonCrear {
+    margin-left: 1rem;
+}
+
+.buttonCrear:hover {
+    background-color: red;
+    padding: 0.8rem;
+    transition: 0.9s;
+}
+

@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useState, useEffect} from 'react';
-import { getByName } from '../../Redux/Actions'
+import { getByName } from '../../Redux/Actions';
+import style from './nav.module.css'
 
 const Nav = () => {
     const [name, setName] = useState('');
@@ -24,13 +25,17 @@ const Nav = () => {
     }, [name, dispatch])
 
     return (
-        <div>
+        <div className={style.div} >
+            <Link to='/' >
+                <button className={style.button} >LANDING</button>
+            </Link>
+
             <Link to='/form' >
-                <button>CREAR PILOTO</button>
+                <button className={style.buttonCrear} >CREAR PILOTO</button>
             </Link>
             <form >
                 <input placeholder='Busqueda' type="search"  onChange={handlerChange} />
-                <button type='submit' onClick={handlerSubmit}>Buscar</button>
+                <button className={style.button} type='submit' onClick={handlerSubmit}>CLEAN</button>
             </form>
         </div>
     )

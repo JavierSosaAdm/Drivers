@@ -1,9 +1,33 @@
 .div {
-    flex-direction: row-reverse;
+    
+    flex-direction: row;
+   
 }
 
 .label {
     color: azure;
+}
+
+.select {
+    display: flex;
     
-    
+}
+
+.divSubcontainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.divMini {
+    display: flex;
+    flex-direction: row;
+}
+
+.button {
+    margin-left: 1rem;
+}
+
+.button:hover {
+    background-color: red;
+    transition: 0.9s;
 }

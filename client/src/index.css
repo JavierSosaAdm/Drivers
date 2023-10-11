@@ -24,9 +24,12 @@ a:hover {
 }
 
 body {
-  margin: 0;
   display: flex;
-  place-items: center;
+  justify-content: center;
+  align-items: center;
+  background-image: url('https://images2.alphacoders.com/121/1214052.png');
+  background-size: cover;
+  background-position: center;
   min-width: 320px;
   min-height: 100vh;
 }

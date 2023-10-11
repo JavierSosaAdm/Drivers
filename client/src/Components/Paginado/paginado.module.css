@@ -1,0 +1,15 @@
+.button {
+    margin-left: 1rem;
+}
+
+.button:hover {
+    background-color: red;
+    transition: 0.9s;
+}
+
+.div {
+    flex-direction: column-reverse;
+    flex-flow: row-reverse;
+    
+
+}

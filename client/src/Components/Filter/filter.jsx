@@ -52,36 +52,47 @@ const Filter = () => {
     const sortedCards = sortOrder === 'ASC' ? filteredDrivers : filteredDrivers.slice().reverse(); 
     
     return (
-        <div className={style.div} >
-            <label className={style.label} htmlFor="teams">Filtrar por Escudería: </label>
-                <select onChange={handlerChange} value={filtrado}>
-                    <option value="">
-                        Select
-                    </option>
-                    {allTeams.map((team) => {
-                        return (
-                            <option value={team.name} key={team.id}>
-                                {team.name}
+        <div className={style.div}>
+            <div className={style.divMini}>
+                <div className={style.divSubcontainer} >
+                    <label htmlFor="teams">Filtrar por Escudería: </label>
+                        <select onChange={handlerChange} value={filtrado}>
+                            <option value="">
+                                Select
                             </option>
-                        )
-                    })}
-                </select>
-            <label htmlFor="origin">Filtrar por Origen: </label>
-                <select onChange={handlerFilterOrigin} value={origin}>
-                    <option value="">Seleccionar origen</option>
-                    <option value="numeric">API</option>
-                    <option value="uuid">DATABASE</option>
-                </select>
+                            {allTeams.map((team) => {
+                                return (
+                                    <option value={team.name} key={team.id}>
+                                        {team.name}
+                                 </option>
+                             )
+                            })}
+                        </select>
+                </div>
 
-            <div>
-                <label>Ordenar por nombre: </label>
-                <button onClick={handlerSortASC}>A-Z</button>
-                <button onClick={handlerSortDESC}>Z-A</button>
+                <div className={style.divSubcontainer} >
+                    <label htmlFor="origin">Filtrar por Origen: </label>
+                        <select className={style.select} onChange={handlerFilterOrigin} value={origin}>
+                            <option value="">Seleccionar origen</option>
+                            <option value="numeric">API</option>
+                            <option value="uuid">DATABASE</option>
+                        </select>
+                </div>
             </div>
-            <div>
-                <label>Ordenar por nacimiento: </label>
-                <button onClick={handlerSortDateASC}>Ascendente</button>
-                <button onClick={handlerSortDateDESC}>Descendente</button>
+
+            <div className={style.divMini} >
+
+                    <div className={style.divSubcontainer} >
+                        <label>Ordenar por nombre: </label>
+                        <button onClick={handlerSortASC} className={style.button}>A-Z</button>
+                        <button onClick={handlerSortDESC} className={style.button}>Z-A</button>
+                    </div>
+
+                    <div className={style.divSubcontainer} >
+                        <label>Ordenar por nacimiento: </label>
+                        <button onClick={handlerSortDateASC} className={style.button}>Ascendente</button>
+                        <button onClick={handlerSortDateDESC} className={style.button}>Descendente</button>
+                    </div>
             </div>
                 
             <Cards filteredDrivers={filteredDrivers} sortedCards={sortedCards} filteredOrigin={filteredOrigin}/>

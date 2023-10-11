@@ -1,0 +1,27 @@
+.divContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+.span {
+    border-right: 2rem;
+}
+
+.p{
+    color: red;
+    font-weight: bold;
+    background-color: rgba(0, 0, 255, 0.317);
+}
+
+.button {
+    display: flex;
+    margin-top: 7rem;
+}
+
+.button:hover {
+    background-color: red;
+    transition: 0.9s;
+}

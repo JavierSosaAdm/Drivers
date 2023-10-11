@@ -12,18 +12,22 @@ const Cards = ({filteredDrivers, sortedCards, filteredOrigin}) => {
     const driversConbinados = filteredOrigin.length > 0 ? filteredOrigin : filteredDrivers;
     
     return (
-        <div className={style.container} >
-            
-            {driversConbinados? driversConbinados.slice((currentPage - 1) * items, (currentPage - 1)* items + items).map((driver) => (
-                <li key={driver.id}>
-                    <Card driver={driver}/>
-                </li>
-            )) : sortedCards?.slice((currentPage - 1) * items, (currentPage - 1)* items + items).map((driver) => (
-                <li key={driver.id}>
-                    <Card driver={driver}/>
-                </li>
-            ))}
-            <Paginado currentPage={currentPage} setCurrentPage={setCurrentPage} max={max} />
+        <div >
+            <div>
+                <Paginado currentPage={currentPage} setCurrentPage={setCurrentPage} max={max} />
+            </div>
+
+            <div className={style.container} >
+                {driversConbinados? driversConbinados.slice((currentPage - 1) * items, (currentPage - 1)* items + items).map((driver) => (
+                    <li key={driver.id}>
+                     <Card driver={driver}/>
+                 </li>
+               )) : sortedCards?.slice((currentPage - 1) * items, (currentPage - 1)* items + items).map((driver) => (
+                  <li key={driver.id}>
+                     <Card driver={driver}/>
+                 </li>
+              ))}
+            </div>
         </div>
     )
 };

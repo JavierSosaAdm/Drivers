@@ -3,13 +3,13 @@ import Home from './Views/Home/home';
 import Landing from './Views/Landing/landing';
 import Form from './Views/Form/form';
 import Detail from './Views/Detail/detail';
-import './App.css';
+import style from'./App.module.css';
 
 function App() {
 
   return (
 
-    <div className="App"> 
+    <div className={style.div}> 
 
       <Routes>
         <Route path='/' element={<Landing/>} />
