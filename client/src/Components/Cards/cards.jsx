@@ -12,8 +12,8 @@ const Cards = ({filteredDrivers, sortedCards, filteredOrigin}) => {
     const driversConbinados = filteredOrigin.length > 0 ? filteredOrigin : filteredDrivers;
     
     return (
-        <div >
-            <div>
+        <div className={style.divContainer} >
+            <div className={style.paginado}>
                 <Paginado currentPage={currentPage} setCurrentPage={setCurrentPage} max={max} />
             </div>
 

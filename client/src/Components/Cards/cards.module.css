@@ -1,18 +1,23 @@
 .container{
   display: flex;
-  flex-flow: wrap-reverse;
+  flex-flow: wrap;
   justify-content: space-between;
-  background-color: #25192ab9;
+  background-color: rgba(0, 110, 255, 0.285);
   opacity: 95%;
   padding: 2em;
   border-radius: 15px;
-  box-shadow: 10px 10px 5px 0px rgba(233, 160, 81, 0.75);
+  /* box-shadow: 10px 10px 5px 0px rgba(233, 160, 81, 0.75); */
   max-width: 90%;
   width: 100%;
   margin: auto;
 }
 
 .paginado {
- flex-direction: row;
+  display: flex;
+  flex-flow: wrap;
 
+}
+
+.divContainer {
+  justify-content: center;
 }

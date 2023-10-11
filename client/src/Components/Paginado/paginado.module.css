@@ -8,8 +8,7 @@
 }
 
 .div {
-    flex-direction: column-reverse;
-    flex-flow: row-reverse;
-    
+    display: flex;
+    margin-top: 3rem;
 
 }

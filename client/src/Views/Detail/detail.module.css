@@ -1,0 +1,31 @@
+.img {
+    height: 35rem;
+    width: 35rem;
+}
+
+.divContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60rem;
+    background-color: rgba(0, 0, 255, 0.326);
+    border-radius: 2rem;
+    background-image: url('https://graffica.info/wp-content/uploads/2017/11/F1_Unveil_Images_Final-640x400.png');
+}
+
+.button {
+    margin-left: 1rem;
+}
+
+.button:hover {
+    background-color: red;
+    transition: 0.9s;
+}

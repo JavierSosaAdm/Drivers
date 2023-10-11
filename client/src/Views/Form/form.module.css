@@ -5,6 +5,7 @@
     margin: 20px;
     color: #fff;
     font-size: 20px;
+    background-image: url('https://cloudfront-us-east-1.images.arcpublishing.com/elcomercio/GITZNE3ROJHWDFR6FM63GQPYQQ.pnghttps://cdn.arstechnica.net/wp-content/uploads/2023/06/A224489_large-640x480.jpg');
   }
   
   /* Estilo para las etiquetas de formulario */
@@ -36,21 +37,13 @@
   
   /* Estilo para el botón de submit */
   .button {
-    cursor: pointer;
-    border-radius: 1rem;
-    color: rgb(238, 240, 243);
-    background-color: rgb(79, 79, 184);
-    font-weight: bold;
-    padding: 0.5rem;
-    }
-    
-    .button:hover {
-        color: rgb(234, 14, 14);
-        padding: 0.7rem;
-        transition: 0.5s;
-        background-color: rgba(78, 78, 149, 0.685);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
+    margin-left: 1rem;
+}
+
+.button:hover {
+    background-color: red;
+    transition: 0.9s;
+} 
   
   /* Efecto hover en el botón de submit */
   
