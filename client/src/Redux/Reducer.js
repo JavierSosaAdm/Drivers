@@ -6,7 +6,6 @@ import {
      GET_BY_ID,
      SORT_ASC,
      SORT_DESC,
-     FILTER_BY_TEAM,
      FILTER_ORIGIN,
      SORT_ASC_DATE,
      SORT_DESC_DATE

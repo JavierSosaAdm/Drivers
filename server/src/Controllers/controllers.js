@@ -37,7 +37,7 @@ const create = async (name, lastName, description, image, nationality, birthdate
         return finalResponse;
     } catch (error) {
         console.error("Error en la creación del conductor:", error);
-        throw error;
+        throw error; // cambiar 
     }
    
 };

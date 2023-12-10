@@ -5,12 +5,14 @@ const Paginado = ({currentPage, setCurrentPage, max, driversConbinados}) => {
     const prevHandler = () => {
         if (currentPage > 1) {
             setCurrentPage(currentPage - 1)
+            console.log(currentPage);
         }
     };
 
     const nextHandler = () => {
         if (currentPage < max) {
             setCurrentPage(currentPage + 1);
+            console.log(currentPage);
         }
     };
 
