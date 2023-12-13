@@ -4,7 +4,8 @@ import Landing from './Views/Landing/landing';
 import Form from './Views/Form/form';
 import Detail from './Views/Detail/detail';
 import style from'./App.module.css';
-
+import axios from 'axios';
+axios.defaults.baseULR = 'http://localhost:3001';
 function App() {
 
   return (
