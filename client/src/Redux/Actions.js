@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // const link = 'http://localhost:3001';
-// axios.defaults.baseURL = 'http://drivers-production.up.railway.app';
+axios.defaults.baseURL = 'http://drivers-production.up.railway.app';
 
 export const getDrivers = () => {
     return async (dispatch) => { // es un retorno de una arrow function asincrona donde se declara una variable 
