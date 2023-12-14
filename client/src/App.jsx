@@ -5,7 +5,8 @@ import Form from './Views/Form/form';
 import Detail from './Views/Detail/detail';
 import style from'./App.module.css';
 import axios from 'axios';
-axios.defaults.baseULR = 'http://localhost:3001';
+// axios.defaults.baseURL = 'http://localhost:3001';
+axios.defaults.baseURL = 'http://drivers-production.up.railway.app';
 function App() {
 
   return (
